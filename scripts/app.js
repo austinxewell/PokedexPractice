@@ -11,6 +11,7 @@ const pokeHeight = document.querySelector('.poke-height');
 const pokeListItems = document.querySelectorAll('.list-item')
 const leftButton = document.querySelector('.left-button')
 const rightButton = document.querySelector('.right-button')
+const pokeSearchButton = document.querySelector('.poke-search-button')
 
 // Consts and Vars
 const TYPES = [
@@ -95,6 +96,39 @@ const fetchPokeData = id => {
         });
 }
 
+// fetches pokemon search from number or name
+fetch(`https://pokeapi.co/api/v2/pokemon/185`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        resetScreen()
+
+        mainScreen.classList.remove('hide');
+        pokeName.textContent = capitalize(data['name']);
+        pokeId.textContent = '#' + data['id'].toString().padStart(3, '0');
+        pokeWeight.textContent = data['weight'];
+        pokeHeight.textContent = data['height'];
+
+        const dataTypes = data['types']
+        const dataFirstType = dataTypes[0];
+        const dataSecondType = dataTypes[1];
+
+        pokeTypeOne.textContent = capitalize(dataFirstType['type']['name']);
+
+        if (dataSecondType) {
+            pokeTypeTwo.classList.remove('hide');
+            pokeTypeTwo.textContent = capitalize(dataSecondType['type']['name']);
+        } else {
+            pokeTypeTwo.classList.add('hide');
+            pokeTypeTwo.textContent = '';
+        }
+
+        mainScreen.classList.add(dataFirstType['type']['name'])
+
+        pokeFrontImage.src = data['sprites']['front_default'] || '';
+        pokeBackImage.src = data['sprites']['back_default'] || '';
+    });
+
 const handleRightButton = () => {
     if (nextUrl) {
         fetchPokeList(nextUrl)
@@ -117,9 +151,15 @@ const handleListItem = (e) => {
     fetchPokeData(id)
 };
 
+const handleSearchButton = () => {
+    console.log('search button clicked');
+    
+}
+
 // Event Listeners
 leftButton.addEventListener('click', handleLeftButton)
 rightButton.addEventListener('click', handleRightButton)
+pokeSearchButton.addEventListener('click', handleSearchButton)
 
 for (const pokeListItem of pokeListItems) {
     pokeListItem.addEventListener('click', handleListItem)
