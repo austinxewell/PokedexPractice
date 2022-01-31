@@ -492,6 +492,11 @@
     flex-wrap: wrap;
   }
 
+  .pokemon-logo-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
   .pokemon-logo {
     width: 700px;
     margin-top: 40px;
