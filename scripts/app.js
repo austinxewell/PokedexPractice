@@ -158,7 +158,7 @@ const handleSearchButton = () => {
             console.log('API failure ' + error)
             resetScreen()
             mainScreen.classList.add('error-screen')
-            pokeName.textContent = 'No Data found'
+            pokeName.textContent = 'No Data Found'
             pokeId.textContent = ''
             pokeWeight.textContent = ''
             pokeHeight.textContent = ''

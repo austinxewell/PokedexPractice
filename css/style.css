@@ -485,3 +485,13 @@
   .error-screen{
     background-color: red;
   }
+
+  .background {
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pokemon-logo {
+    width: 50%;
+  }
