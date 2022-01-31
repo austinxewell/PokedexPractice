@@ -481,3 +481,7 @@
   .fairy {
     background: #F9AEFF;
   }
+
+  .error-screen{
+    background-color: red;
+  }

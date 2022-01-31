@@ -21,7 +21,8 @@ const TYPES = [
     'bug', 'ghost', 'steel',
     'fire', 'water', 'grass',
     'electric', 'psychic', 'ice',
-    'dragon', 'dark', 'fairy'
+    'dragon', 'dark', 'fairy',
+    'error-screen'
 ];
 
 let prevUrl = null;
@@ -122,17 +123,10 @@ const handleListItem = (e) => {
 };
 
 const handleSearchButton = () => {
-    console.log(pokeSearchInput.value);
-
     // fetches pokemon search from number or name
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearchInput.value}`)
         .then(res => res.json())
         .then(data => {
-
-            if (!data) {
-                resetScreen()
-            }
-            console.log(data);
             resetScreen()
 
             mainScreen.classList.remove('hide');
@@ -159,8 +153,20 @@ const handleSearchButton = () => {
 
             pokeFrontImage.src = data['sprites']['front_default'] || '';
             pokeBackImage.src = data['sprites']['back_default'] || '';
+        })
+        .catch(error => {
+            console.log('API failure ' + error)
+            resetScreen()
+            mainScreen.classList.add('error-screen')
+            pokeName.textContent = 'No Data found'
+            pokeId.textContent = ''
+            pokeWeight.textContent = ''
+            pokeHeight.textContent = ''
+            pokeTypeOne.textContent = ''
+            pokeTypeTwo.textContent = ''
+            pokeFrontImage.src = ''
+            pokeBackImage.src = ''
         });
-
 }
 
 // Event Listeners
