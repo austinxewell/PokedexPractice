@@ -14,7 +14,7 @@
   # Usage
   To use the web application you simply need to visit the deployed URL and click on either next, previous, or your selected pokemon. https://austinxewell.github.io/PokedexPractice/
 
-  ![PokedexPractice](https://user-images.githubusercontent.com/86080954/151102564-def7ae5e-a007-4033-862c-60d3db582c4b.JPG)
+  ![PokedexPractice](https://user-images.githubusercontent.com/86080954/151891895-bfb65e86-513f-4b2a-be54-4ae04dcab386.JPG)
   # License
   ## The Unlicense
   A license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.
