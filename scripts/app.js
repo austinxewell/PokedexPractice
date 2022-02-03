@@ -98,8 +98,6 @@ const fetchPokeData = id => {
         });
 }
 
-
-
 const handleRightButton = () => {
     if (nextUrl) {
         fetchPokeList(nextUrl)
@@ -114,7 +112,7 @@ const handleLeftButton = () => {
 
 const handleListItem = (e) => {
     if (!e.target) return;
-
+    
     const listItem = e.target;
     if (!listItem.textContent) return;
 
@@ -123,7 +121,7 @@ const handleListItem = (e) => {
 };
 
 const handleSearchButton = () => {
-    // fetches pokemon search from number or name
+    // Fetches pokemon search data from number or name
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearchInput.value}`)
         .then(res => res.json())
         .then(data => {
